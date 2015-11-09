@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="twitter">
+	<title>Twitter</title>
+	<summary>Displays twitter feed on the account details page.</summary>
+	<author>Intelliants LLC</author>
+	<contributor>Intelliants LLC</contributor>
+	<version>3.2.0</version>
+	<date>2014-11-19</date>
+	<compatibility>3.2</compatibility>
+
+	<phrases>
+		<phrase key="twitter_widget_id" category="tooltip" code="en"><![CDATA[Please refer to the plugin's 'Installation' section for getting Twitter widget ID.]]></phrase>
+	</phrases>
+
+	<configgroup name="twitter">Twitter</configgroup>
+
+	<config group="twitter" name="twitter_divider" type="divider" description="Twitter">Twitter</config>
+	<config group="twitter" name="twitter_widget_id" type="text" description="Twitter Widget ID" length="255"><![CDATA[]]></config>
+	<config group="twitter" name="twitter_theme" type="select" values="light,dark" description="Twitter Theme">light</config>
+	<config group="twitter" name="number_of_tweets" type="text" description="Number of tweets to display in box">5</config>
+	<config group="twitter" name="twitter_lang" type="text" description="Twitter Language">EN</config>
+
+	<fields_groups>
+		<group item="members" name="twitter" tabview="1" title="Twitter"><![CDATA[]]></group>
+	</fields_groups>
+
+	<fields>
+		<field item="members" group="twitter" name="twitter" title="Twitter username" type="text" page="profile,view_member" length="50">Twitter username</field>
+	</fields>
+
+	<hooks>
+		<hook name="smartyFrontAfterHeadSection" type="smarty">
+			<![CDATA[
+{literal}
+	<script type="text/javascript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+{/literal}
+			]]>
+		</hook>
+
+		<hook name="smartyViewListingBeforeFooter" type="smarty" filename="plugins/twitter/templates/tab.tpl"><![CDATA[]]></hook>
+	</hooks>
+</plugin>
